@@ -1,4 +1,4 @@
-require("@nomicfoundation/hardhat-waffle");
+require("@nomiclabs/hardhat-waffle");
 
 const fs = require('fs');
 const privateKey = fs.readFileSync('.secret').toString();
