@@ -9,8 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.1.5",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@nomiclabs/hardhat-ethers": "^2.0.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^4.4.1",
+    "axios": "^0.24.0",
+    "buffer": "^6.0.3",
+    "chai": "^4.3.4",
+    "ethers": "^5.5.2",
+    "framer-motion": "^10.16.4",
+    "hardhat": "^2.8.0",
+    "ipfs-http-client": "^60.0.1",
     "react": "latest",
     "react-dom": "latest",
-    "next": "latest"
+    "next": "latest",
+    "react-icons": "^4.11.0",
+    "web3modal": "^1.9.12"
   }
 }
