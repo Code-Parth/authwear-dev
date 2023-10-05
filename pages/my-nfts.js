@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Grid, chakra, Flex, Spinner } from "@chakra-ui/react";
 import { useStateContext } from "@/context";
 import { Link } from "@chakra-ui/react";
-// import { ExternalLinkIcon } from '@chakra-ui/icons'
+
 export default function MyNFTs() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
@@ -13,6 +13,8 @@ export default function MyNFTs() {
   useEffect(() => {
     loadNFTs();
   }, []);
+
+  const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
   async function loadNFTs() {
     try {
@@ -71,7 +73,7 @@ export default function MyNFTs() {
               height={"fit-content"}
             >
               <Link
-                href="https://explorer.apothem.network/nft/xdca9d89b029927ab652b7b2948670a848fa3f941a7/6#token-transfer"
+                href={`https://explorer.apothem.network/nft/${contractAddress}/${nft.tokenId}`}
                 isExternal
               >
                 <chakra.img

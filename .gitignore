@@ -35,7 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 node_modules
-.env
+# .env
 coverage
 coverage.json
 typechain
@@ -45,4 +45,4 @@ typechain-types
 cache
 artifacts
 config.js
-.secret
+# .secret
