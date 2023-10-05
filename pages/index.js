@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { ethers } from 'ethers';
-import { Box, Button, Flex, Grid, Spinner, chakra } from '@chakra-ui/react';
-import axios from 'axios';
-import Web3Modal from 'web3modal';
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
+import { Box, Button, Flex, Grid, Spinner, chakra } from "@chakra-ui/react";
+import axios from "axios";
+import Web3Modal from "web3modal";
 
-import { marketplaceAddress } from '../config';
+import { marketplaceAddress } from "../config";
 
-import NFTMarketplace from '../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json';
-import { useStateContext } from '@/context';
+import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
+import { useStateContext } from "@/context";
 
 export default function Home() {
   const [nfts, setNfts] = useState([]);
-  const [loadingState, setLoadingState] = useState('not-loaded');
+  const [loadingState, setLoadingState] = useState("not-loaded");
   const [isLoading, setIsLoading] = useState(false);
   const { contract, fetchUnsoldListedNFTs } = useStateContext();
 
@@ -27,7 +27,7 @@ export default function Home() {
       setIsLoading(true);
       const unsoldNFTs = await fetchUnsoldListedNFTs();
       setNfts(unsoldNFTs);
-      setLoadingState('loaded');
+      setLoadingState("loaded");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -48,7 +48,7 @@ export default function Home() {
     );
 
     /* user will be prompted to pay the asking proces to complete the transaction */
-    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether');
+    const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
     try {
       const transaction = await contract.createMarketSale(nft.tokenId, {
         value: price,
@@ -60,7 +60,7 @@ export default function Home() {
     loadNFTs();
   }
 
-  if (loadingState === 'loaded' && !nfts.length)
+  if (loadingState === "loaded" && !nfts.length)
     return (
       <chakra.h1 px={12} py={10} fontSize="1.25rem" lineHeight="2.25rem">
         No items in marketplace
@@ -83,20 +83,20 @@ export default function Home() {
 
   return (
     <Flex justifyContent="center">
-      <Box px="4" maxW="1600px">
-        <Grid templateColumns="1fr 1fr 1fr 1fr" gap={6} pt={4}>
+      <Box px="2" maxW="80%">
+        <Grid templateColumns="1fr 1fr 1fr 1fr" gap={4} pt={4}>
           {nfts.map((nft, i) => (
             <Box
               key={i}
-              border={'brand.custom'}
+              border={"brand.custom"}
               overflow="hidden"
               boxShadow="brand.custom"
               borderRadius="0.75rem"
             >
-              <chakra.img src={nft.image} width={'350px'} height={'300px'} />
+              <chakra.img src={nft.image} width={"100%"} height={"300px"} />
               <Box p={4}>
                 <chakra.p
-                  style={{ height: '64px' }}
+                  style={{ height: "64px" }}
                   fontWeight="semibold"
                   fontSize="1.5rem"
                   lineHeight="2rem"
@@ -104,10 +104,10 @@ export default function Home() {
                   {nft.name}
                 </chakra.p>
                 <Box h="70px" overflow="hidden">
-                  <chakra.p color={'gray.400'}>{nft.description}</chakra.p>
+                  <chakra.p color={"gray.400"}>{nft.description}</chakra.p>
                 </Box>
               </Box>
-              <Box p={4} bg={'black'}>
+              <Box p={4} bg={"black"}>
                 <chakra.p
                   color="white"
                   fontWeight="bold"
@@ -126,7 +126,7 @@ export default function Home() {
                   w="full"
                   onClick={() => buyNft(nft)}
                   _hover={{
-                    background: 'brand.custom',
+                    background: "brand.custom",
                   }}
                 >
                   Buy

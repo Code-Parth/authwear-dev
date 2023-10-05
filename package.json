@@ -23,10 +23,11 @@
     "framer-motion": "^10.16.4",
     "hardhat": "^2.8.0",
     "ipfs-http-client": "^60.0.1",
+    "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "next": "latest",
     "react-icons": "^4.11.0",
+    "react-router-dom": "6",
     "web3modal": "^1.9.12"
   }
 }
