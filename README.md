@@ -67,9 +67,6 @@ To get started with AuthWear, follow these steps:
 - HArdhat
 - Yarn
 
-## Contributing
-
-We welcome contributions to the AuthWear project. Please refer to our [Contribution Guidelines](CONTRIBUTING.md) for more information on how to get involved.
 
 ## License
 
