@@ -80,7 +80,7 @@ export default function Home() {
       </Flex>
     );
   }
-
+  console.log("===================")
   return (
     <Flex justifyContent="center">
       <Box px="2" maxW="80%">

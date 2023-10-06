@@ -42,7 +42,7 @@ typechain
 typechain-types
 
 # Hardhat files
-cache
-artifacts
+# cache
+# artifacts
 # config.js
-.secret
+# .secret

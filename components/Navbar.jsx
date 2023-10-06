@@ -13,48 +13,50 @@ function Navbar() {
                 method: 'eth_requestAccounts',
             });
             const account = ethers.utils.getAddress(accounts[0]);
+            console.log(account,accounts[0])
             setAccount(account);
         } catch (error) {
             console.log(error);
         }
     };
-
+    
     return (
         <chakra.nav borderBottomWidth="1px" p="1.5rem 3rem">
             <Flex justifyContent={'space-between'} alignItems={'center'}>
                 <chakra.p fontSize="3rem" lineHeight="2.5rem" fontWeight="bold" fontFamily="serif">
                     AuthWear
                     <Flex>
-                    <chakra.p fontSize="2rem" mt="2rem" mr="0.3rem" fontWeight="medium">Elevate.</chakra.p>
-                    <chakra.p fontSize="2rem" mt="2rem" mr="0.3rem" fontWeight="medium">Authenticate.</chakra.p>
-                    <chakra.p fontSize="2rem" mt="2rem" mr="0.3rem" fontWeight="medium">Captivate.</chakra.p>
-                
-                    </Flex>                </chakra.p>
+                        <chakra.p fontSize="2rem" mt="2rem" mr="0.3rem" fontWeight="medium">Elevate.</chakra.p>
+                        <chakra.p fontSize="2rem" mt="2rem" mr="0.3rem" fontWeight="medium">Authenticate.</chakra.p>
+                        <chakra.p fontSize="2rem" mt="2rem" mr="0.3rem" fontWeight="medium">Captivate.</chakra.p>
+
+                    </Flex>
+                </chakra.p>
                 {/* <chakra.p fontSize="1rem"  fontStyle="italic">
                     **Please make sure you have metamask installed and you are on XDC Apothem Testnet
                 </chakra.p> */}
                 <Flex
-                mr="1.5"
-                color={'#5553ff'}
-                fontWeight="semibold"
-                alignItems="center"
-                justifyContent="space-around"
-                fontFamily="sans-serif"            >
-                <Flex>
-                    <Link href="/">
-                        <chakra.p mr="2rem" fontSize="1.9rem">Listed NFTs</chakra.p>
-                    </Link>
-                    <Link href="/create-nft">
-                        <chakra.p mr="2rem" fontSize="1.9rem">Mint & List NFT</chakra.p>
-                    </Link>
-                    <Link href="/my-nfts">
-                        <chakra.p mr="2rem" fontSize="1.9rem">Collection</chakra.p>
-                    </Link>
-                    {/* <Link href="/dashboard">
+                    mr="1.5"
+                    color={'#5553ff'}
+                    fontWeight="semibold"
+                    alignItems="center"
+                    justifyContent="space-around"
+                    fontFamily="sans-serif"            >
+                    <Flex>
+                        <Link href="/">
+                            <chakra.p mr="2rem" fontSize="1.9rem">Listed NFTs</chakra.p>
+                        </Link>
+                        <Link href="/create-nft">
+                            <chakra.p mr="2rem" fontSize="1.9rem">Mint & List NFT</chakra.p>
+                        </Link>
+                        <Link href="/my-nfts">
+                            <chakra.p mr="2rem" fontSize="1.9rem">Collection</chakra.p>
+                        </Link>
+                        {/* <Link href="/dashboard">
                         <chakra.p mr="1.5rem" fontSize="1.7rem">Dashboard</chakra.p>
                     </Link> */}
+                    </Flex>
                 </Flex>
-            </Flex>
                 <Flex>
                     {account ? (
                         <Button
@@ -87,10 +89,8 @@ function Navbar() {
                     )}
                     <ColorModeSwitcher />
                 </Flex>
-            
-
-            
-        </Flex></chakra.nav>
+            </Flex>
+        </chakra.nav>
     );
 }
 

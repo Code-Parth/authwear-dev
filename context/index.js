@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { Flex, Spinner } from '@chakra-ui/react';
+// import { Flex, Spinner } from '@chakra-ui/react';
 import Web3Modal from 'web3modal';
 import axios from 'axios';
 import { marketplaceAddress } from '../config';

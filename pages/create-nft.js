@@ -66,7 +66,7 @@ export default function CreateItem() {
             return url;
         } catch (error) {
             console.log('Error uploading file: ', error);
-            setIsLoading(true);
+            setIsLoading(false);
         }
     }
 
