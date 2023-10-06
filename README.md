@@ -1,40 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AuthWear
 
-## Getting Started
+AuthWear is the future of fashion—a blockchain-powered platform that ensures every merch you buy is authentic. Say goodbye to counterfeit worries and celebrate authentic merch and wearables. 
 
-First, run the development server:
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](Installation)
+- [How It Works](#how-it-works)
+- [Technology Stack](#technology-stack)
+- [Contributing](#contributing)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Introduction
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In a world plagued by counterfeit fashion merchandise, AuthWear is a beacon of trust and authenticity. Our platform leverages blockchain technology to ensure that every fashion item you purchase is genuine and eco-conscious.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- **Verify Authenticity**: Instantly verify the authenticity of fashion merchandise using QR codes.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- **Celebrate Individual Style**: Trust your unique fashion expression, knowing it's genuine.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Blockchain Authentication**: Utilizes XinFin (XDC) blockchain for unforgeable authenticity verification.
+- **QR Code Technology**: Seamlessly scan QR codes to access detailed product history.
+- **Ownership Assurance**: Proves legitimate ownership and provenance of fashion items.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+To get started with AuthWear, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## How It Works
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![DIgital soln flow](https://github.com/Code-Parth/authwear-dev/assets/82398107/1fd10d34-089d-41fd-92db-6845f0a07bae)
+
+![Physical process flow new](https://github.com/Code-Parth/authwear-dev/assets/82398107/83b11540-b635-434b-9794-735b643c39e2)
+
+
+- Merch collaborators release their merchandise on our platform and each product is assigned a UID and Qr code.
+- During the purchase of the product, the generated UID(nft form) will be transferred to the customer’s address.
+- Buyers and chain buyers can verify the authenticity of the product using the QR code that will be embedded on the product in a label or any feasible form.
+
+
+
+1. **Blockchain Verification**: Each fashion item is associated with a unique NFT (Non-Fungible Token) on the XinFin blockchain, guaranteeing authenticity.
+
+2. **QR Code Scanning**: Users can scan the QR code on fashion items to access official history linked to the product's owner, including authenticity checks and provenance.
+
+
+
+## Technology Stack
+
+- XinFin (XDC) Blockchain
+- QR Code Generation and Scanning
+- IPFS (InterPlanetary File System)
+- Apothem
+- Metamask
+- Smart Contracts (Solidity)
+- ChakraUI
+- Next.JS
+- Infura
+- TXDC
+- XRC721 Tokens
+- HArdhat
+- Yarn
+
+## Contributing
+
+We welcome contributions to the AuthWear project. Please refer to our [Contribution Guidelines](CONTRIBUTING.md) for more information on how to get involved.
+
+## License
+
+AuthWear is licensed under the [MIT License](LICENSE).
