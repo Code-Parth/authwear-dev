@@ -33,15 +33,26 @@ In a world plagued by counterfeit fashion merchandise, AuthWear is a beacon of t
 
 To get started with AuthWear, follow these steps:
 
+```bash
+git clone https://github.com/Code-Parth/authwear-dev.git
+cd authwear-dev
+yarn
+```
+
+```bash
+npx hardhat run scripts/deploy.js --network apothem
+```
+
+```bash
+yarn run dev
+```
 
 
 ## How It Works
 
+![DIgital soln flow](https://github.com/Code-Parth/authwear-dev/assets/84669955/3692672a-dd4c-4845-bff8-982b78fc7c8a)
 
-![DIgital soln flow](https://github.com/Code-Parth/authwear-dev/assets/82398107/1fd10d34-089d-41fd-92db-6845f0a07bae)
-
-![Physical process flow new](https://github.com/Code-Parth/authwear-dev/assets/82398107/83b11540-b635-434b-9794-735b643c39e2)
-
+![Physical process flow new](https://github.com/Code-Parth/authwear-dev/assets/84669955/fc2054f1-69dc-42ea-b59c-10481a8d06c1)
 
 - Merch collaborators release their merchandise on our platform and each product is assigned a UID and Qr code.
 - During the purchase of the product, the generated UID(nft form) will be transferred to the customer’s address.
