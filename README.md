@@ -2,6 +2,9 @@
 
 AuthWear is the future of fashion—a blockchain-powered platform that ensures every merch you buy is authentic. Say goodbye to counterfeit worries and celebrate authentic merch and wearables. 
 
+Authwear website link: https://authwear.vercel.app/
+Authwear other reference links: https://docs.google.com/document/d/1ck_Ku7COy8VCfM2-O0hAsvHbtAKXjiqPgC4oCogqyLs/edit?usp=sharing
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
