@@ -35,14 +35,14 @@ yarn-error.log*
 next-env.d.ts
 
 node_modules
-# .env
+.env
 coverage
 coverage.json
 typechain
 typechain-types
 
 # Hardhat files
-# tcache
+# cache
 # artifacts
 # config.js
 # .secret

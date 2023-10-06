@@ -1,26 +1,27 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require('hardhat');
-const fs = require('fs');
+// Import necessary modules
+const hre = require('hardhat'); // Hardhat for Ethereum development
+const fs = require('fs'); // File system module for writing to files
 
+// Define an asynchronous function called 'main' for deploying the smart contract
 async function main() {
+  // Get the contract factory for the 'NFTMarketplace' smart contract
   const NFTMarketplace = await hre.ethers.getContractFactory('NFTMarketplace');
+
+  // Deploy the 'NFTMarketplace' smart contract
   const nftMarketplace = await NFTMarketplace.deploy();
+
+  // Wait for the deployment to complete and confirm that it's deployed
   await nftMarketplace.deployed();
   console.log('NFTMarketplace deployed to:', nftMarketplace.address);
 
+  // Write the contract's address to a configuration file
   fs.writeFileSync('./config.js', `
   export const marketplaceAddress = "${nftMarketplace.address}"
-  `)
+  `);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
+// Call the 'main' function and handle any errors
 main().catch((error) => {
   console.error(error);
-  process.exitCode = 1;
+  process.exitCode = 1; // Set the process exit code to 1 in case of an error
 });

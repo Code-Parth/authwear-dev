@@ -1,3 +1,4 @@
+// Import necessary dependencies and components
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
@@ -10,12 +11,14 @@ import { marketplaceAddress } from '../config';
 
 import NFTMarketplace from '../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json';
 
+// Create an authentication token for IPFS
 const auth =
     'Basic ' +
     Buffer.from(
         process.env.INFURA_IPFS_API_KEY + ':' + process.env.INFURA_IPFS_API_KEY_SECRET
     ).toString('base64');
 
+// Create an IPFS client
 const client = ipfsHttpClient({
     host: 'infura-ipfs.io',
     port: 5001,
@@ -25,7 +28,9 @@ const client = ipfsHttpClient({
     },
 });
 
+// Define the CreateItem component
 export default function CreateItem() {
+    // Initialize state variables
     const [isLoading, setIsLoading] = useState(false);
     const [fileUrl, setFileUrl] = useState(null);
     const [formInput, updateFormInput] = useState({
@@ -35,8 +40,8 @@ export default function CreateItem() {
     });
     const router = useRouter();
 
+    // Function to handle file input change (upload image to IPFS)
     async function onChange(e) {
-        /* upload image to IPFS */
         const file = e.target.files[0];
         try {
             const added = await client.add(file, {
@@ -48,28 +53,32 @@ export default function CreateItem() {
             console.log('Error uploading file: ', error);
         }
     }
+
+    // Function to upload metadata to IPFS
     async function uploadToIPFS() {
         const { name, description, price } = formInput;
         if (!name || !description || !price || !fileUrl) return;
-        /* first, upload metadata to IPFS */
+
+        // Create metadata as JSON
         const data = JSON.stringify({
             name,
             description,
             image: fileUrl,
         });
+
         try {
             setIsLoading(true);
             const added = await client.add(data);
             const url = `https://authwear.infura-ipfs.io/ipfs/${added.path}`;
-            /* after metadata is uploaded to IPFS, return the URL to use it in the transaction */
             setIsLoading(false);
-            return url;
+            return url; // Return the URL to use in the transaction
         } catch (error) {
             console.log('Error uploading file: ', error);
             setIsLoading(false);
         }
     }
 
+    // Function to list an NFT for sale
     async function listNFTForSale() {
         const url = await uploadToIPFS();
         const web3Modal = new Web3Modal();
@@ -77,7 +86,7 @@ export default function CreateItem() {
         const provider = new ethers.providers.Web3Provider(connection);
         const signer = provider.getSigner();
 
-        /* create the NFT */
+        // Create the NFT
         const price = ethers.utils.parseUnits(formInput.price, 'ether');
         let contract = new ethers.Contract(
             marketplaceAddress,
@@ -94,9 +103,10 @@ export default function CreateItem() {
             setIsLoading(false);
         }
 
-        router.push('/');
+        router.push('/'); // Redirect to the main page after creating the NFT
     }
 
+    // Render a loading spinner if the component is in loading state
     if (isLoading) {
         return (
             <Flex justifyContent="center" alignItems="center" height="80vh">
@@ -111,9 +121,11 @@ export default function CreateItem() {
         );
     }
 
+    // Render the create item form
     return (
         <Flex justifyContent="center">
             <Flex w="50%" direction="column" pb={12}>
+                {/* Input fields for asset name, description, price */}
                 <chakra.input
                     mt="8"
                     border="brand.custom"
@@ -148,6 +160,7 @@ export default function CreateItem() {
                     type="number"
                     min="0.00001"
                 />
+                {/* File input for asset image */}
                 <chakra.input
                     type="file"
                     name="Asset"
@@ -155,6 +168,7 @@ export default function CreateItem() {
                     onChange={onChange}
                     required
                 />
+                {/* Display the uploaded image */}
                 {fileUrl && (
                     <chakra.img
                         borderRadius="0.24rem"
@@ -163,6 +177,7 @@ export default function CreateItem() {
                         src={fileUrl}
                     />
                 )}
+                {/* Button to create and list the NFT */}
                 <Button
                     onClick={listNFTForSale}
                     fontWeight="bold"
@@ -175,6 +190,7 @@ export default function CreateItem() {
                         background: 'brand.custom',
                     }}
                     color="white"
+                    // Disable the button if required fields are empty
                     isDisabled={!formInput.price || !formInput.name ? true : false}
                 >
                     Create NFT

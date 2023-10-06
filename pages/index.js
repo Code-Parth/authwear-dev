@@ -1,32 +1,38 @@
+// Importing necessary dependencies and components
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { Box, Button, Flex, Grid, Spinner, chakra } from "@chakra-ui/react";
 import axios from "axios";
 import Web3Modal from "web3modal";
 
+// Importing a configuration file
 import { marketplaceAddress } from "../config";
 
+// Importing the JSON representation of your smart contract
 import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 import { useStateContext } from "@/context";
 
+// Defining the Home component
 export default function Home() {
+  // Initializing state variables
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [isLoading, setIsLoading] = useState(false);
   const { contract, fetchUnsoldListedNFTs } = useStateContext();
 
+  // useEffect hook runs when the 'contract' variable changes
   useEffect(() => {
     if (contract) {
-      loadNFTs();
+      loadNFTs(); // Load NFTs when 'contract' is available
     }
   }, [contract]);
 
-  //query for unsold market items
+  // Function to load unsold NFTs from the contract
   async function loadNFTs() {
     try {
       setIsLoading(true);
       const unsoldNFTs = await fetchUnsoldListedNFTs();
-      setNfts(unsoldNFTs);
+      setNfts(unsoldNFTs); // Set the NFTs in state
       setLoadingState("loaded");
       setIsLoading(false);
     } catch (error) {
@@ -35,8 +41,8 @@ export default function Home() {
     }
   }
 
+  // Function to buy an NFT
   async function buyNft(nft) {
-    /* needs the user to sign the transaction, so will use Web3Provider and sign it */
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -47,7 +53,6 @@ export default function Home() {
       signer
     );
 
-    /* user will be prompted to pay the asking proces to complete the transaction */
     const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
     try {
       const transaction = await contract.createMarketSale(nft.tokenId, {
@@ -57,13 +62,14 @@ export default function Home() {
     } catch (error) {
       console.error(error);
     }
-    loadNFTs();
+    loadNFTs(); // Reload NFTs after a purchase
   }
 
+  // Render the component based on the loading state and NFTs data
   if (loadingState === "loaded" && !nfts.length)
     return (
       <chakra.h1 px={12} py={10} fontSize="1.25rem" lineHeight="2.25rem">
-        No items in marketplace
+        No items in the marketplace
       </chakra.h1>
     );
 
@@ -80,7 +86,8 @@ export default function Home() {
       </Flex>
     );
   }
-  console.log("===================")
+
+  // Render NFTs as a grid of boxes with their details
   return (
     <Flex justifyContent="center">
       <Box px="2" maxW="80%">
