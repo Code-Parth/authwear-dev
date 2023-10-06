@@ -79,7 +79,7 @@ yarn run dev
 - Infura
 - TXDC
 - XRC721 Tokens
-- HArdhat
+- Hardhat
 - Yarn
 
 
