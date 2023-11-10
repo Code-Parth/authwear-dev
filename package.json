@@ -16,7 +16,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.3",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/contracts": "^4.4.1",
-    "axios": "^0.24.0",
+    "axios": "^1.6.0",
     "buffer": "^6.0.3",
     "chai": "^4.3.4",
     "ethers": "^5.5.2",
